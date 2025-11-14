@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 @Table(name = "sessions")
 public class Session {
@@ -24,18 +22,15 @@ public class Session {
     @Column(length = 1000)
     private String description;
     
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Kolkata")
     @Column(nullable = false)
     private LocalDateTime startTime;
     
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Kolkata")
     @Column(nullable = false)
     private LocalDateTime endTime;
     
     @Column(nullable = false)
     private Long createdBy;
     
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Kolkata")
     @Column(nullable = false)
     private LocalDateTime createdAt;
     

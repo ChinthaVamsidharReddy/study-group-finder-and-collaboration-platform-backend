@@ -74,10 +74,9 @@ public class SessionReminderService {
                 
                 // Check if reminder should be sent now (within 1 minute window)
                 // Reminder time should be in the past but within last minute
-                if (!reminderTime.isAfter(now) && reminderTime.isAfter(now.minusMinutes(1))) {
-                    // Send reminders to all members
+             // Check if within a small window (e.g., 10 seconds) before reminder time
+                if (now.isAfter(reminderTime.minusSeconds(10)) && now.isBefore(reminderTime.plusSeconds(10))) {
                     for (Long userId : memberIds) {
-                        // Check if already sent (idempotent)
                         if (!sessionService.isReminderSent(session.getId(), userId, offset)) {
                             Register user = registerRepository.findById(userId).orElse(null);
                             if (user != null) {
@@ -87,6 +86,7 @@ public class SessionReminderService {
                         }
                     }
                 }
+
             }
         }
     }

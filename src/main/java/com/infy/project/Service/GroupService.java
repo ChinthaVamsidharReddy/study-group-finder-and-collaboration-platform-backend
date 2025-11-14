@@ -29,8 +29,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class GroupService {
-
-    int count_for_courses=10;
+	
+	int count_for_courses=10;
+	
     @Autowired
     private GroupRepository groupRepository; 
 
@@ -55,7 +56,7 @@ public class GroupService {
         group.setPrivacy(request.getPrivacy());
         group.setCreatedBy(creatorId);
         group.setCreatedAt(LocalDateTime.now());
-
+        
         Group savedGroup = groupRepository.save(group);
 
         // Add creator as admin

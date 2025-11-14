@@ -263,33 +263,64 @@ public class SessionService {
     /**
      * Get sessions that need reminders (for scheduled job)
      */
+//    public List<Session> getSessionsNeedingReminders(LocalDateTime now) {
+//        List<Session> allSessions = sessionRepository.findAll();
+//        List<Session> needingReminders = new ArrayList<>();
+//        
+//        for (Session session : allSessions) {
+//            if (!session.getConfirmed() || session.getStartTime() == null) {
+//                continue;
+//            }
+//            
+//            // Parse reminder options
+//            List<Integer> offsets = parseReminderOptions(session.getReminderOptions());
+//            LocalDateTime sessionStart = session.getStartTime();
+//            
+//            for (Integer offset : offsets) {
+//                LocalDateTime reminderTime = sessionStart.minusMinutes(offset);
+//                // Check if reminder should be sent now (within 1 minute window)
+//                if (reminderTime.isBefore(now) || reminderTime.isAfter(now.minusMinutes(1))) {
+//                    if (reminderTime.isBefore(now) && reminderTime.isAfter(now.minusMinutes(1))) {
+//                        needingReminders.add(session);
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//        
+//        return needingReminders;
+//    }
+    
     public List<Session> getSessionsNeedingReminders(LocalDateTime now) {
         List<Session> allSessions = sessionRepository.findAll();
         List<Session> needingReminders = new ArrayList<>();
-        
+
         for (Session session : allSessions) {
-            if (!session.getConfirmed() || session.getStartTime() == null) {
-                continue;
-            }
-            
-            // Parse reminder options
+            if (!session.getConfirmed() || session.getStartTime() == null) continue;
+
             List<Integer> offsets = parseReminderOptions(session.getReminderOptions());
             LocalDateTime sessionStart = session.getStartTime();
-            
+
             for (Integer offset : offsets) {
                 LocalDateTime reminderTime = sessionStart.minusMinutes(offset);
-                // Check if reminder should be sent now (within 1 minute window)
-                if (reminderTime.isBefore(now) || reminderTime.isAfter(now.minusMinutes(1))) {
-                    if (reminderTime.isBefore(now) && reminderTime.isAfter(now.minusMinutes(1))) {
-                        needingReminders.add(session);
-                        break;
-                    }
+
+                // Only trigger if within 30s window AND not already sent
+                if (now.isAfter(reminderTime.minusSeconds(30)) &&
+                    now.isBefore(reminderTime.plusSeconds(30)) &&
+                    !isReminderSent(session.getId(), session.getCreatedBy(), offset)) {
+
+                    needingReminders.add(session);
+                    // Immediately mark as sent to prevent re-triggering
+                    markReminderSent(session.getId(), session.getCreatedBy(), offset);
+                    break;
                 }
             }
         }
-        
+
         return needingReminders;
     }
+
+
     
     /**
      * Mark reminder as sent (idempotent)

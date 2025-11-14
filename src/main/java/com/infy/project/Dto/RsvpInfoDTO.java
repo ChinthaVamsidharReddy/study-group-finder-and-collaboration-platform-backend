@@ -30,6 +30,8 @@ public class RsvpInfoDTO {
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
+	
+	
     
     
 }

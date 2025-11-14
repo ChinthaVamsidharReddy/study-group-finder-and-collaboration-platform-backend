@@ -3,8 +3,6 @@ package com.infy.project.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 @Table(name = "session_time_slots")
 public class SessionTimeSlot {
@@ -17,11 +15,9 @@ public class SessionTimeSlot {
     @JoinColumn(name = "session_id", nullable = false)
     private Session session;
     
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Kolkata")
     @Column(nullable = false)
     private LocalDateTime startTime;
     
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Asia/Kolkata")
     @Column(nullable = false)
     private LocalDateTime endTime;
     

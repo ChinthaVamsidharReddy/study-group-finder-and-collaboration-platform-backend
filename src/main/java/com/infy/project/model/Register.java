@@ -21,8 +21,8 @@ public class Register {
 
     @Column(nullable = false)
     private String password;
-	@Lob
-    @Column(columnDefinition = "TEXT")
+
+    @Column(columnDefinition = "LONGTEXT")
     private String avatar;
 
     private String secondarySchool;

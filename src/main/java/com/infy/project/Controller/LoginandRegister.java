@@ -59,7 +59,7 @@ public class LoginandRegister {
 	            "email", logindto.getEmail(),
 	            "name",name
 	        ));
-	        // System.out.println("\n\n\n\n\n "+name+" \n\n\n\n login completed \n\n\n\n\n\n\n");
+	        System.out.println("\n\n\n\n\n "+name+" \n\n\n\n login completed \n\n\n\n\n\n\n");
 	        return ResponseEntity.ok(response);
 	    } else {
 	        return ResponseEntity.status(401).body(Map.of("error", "Invalid credentials"));

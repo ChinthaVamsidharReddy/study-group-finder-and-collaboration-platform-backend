@@ -15,13 +15,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(
-    origins = {
-        "https://study-group-finder-and-collaboratio.vercel.app",
-        "http://localhost:3000"
-    },
-    allowCredentials = "true"
-)
+//@CrossOrigin(origins = "https://study-group-finder-and-collaboration.onrender.com","http://localhost:3000", allowCredentials = "true")
+
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 
 public class SessionController {
     private static final Logger log = LoggerFactory.getLogger(SessionController.class);
