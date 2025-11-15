@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 
-@CrossOrigin(origins = "https://study-group-finder-and-collaboratio.vercel.app", allowCredentials = "true")
+
 
 public class SessionController {
     private static final Logger log = LoggerFactory.getLogger(SessionController.class);
