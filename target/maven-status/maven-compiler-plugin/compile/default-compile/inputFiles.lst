@@ -1,5 +1,4 @@
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\Application.java
-C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\config\CorsConfig.java
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\config\JwtHandshakeInterceptor.java
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\config\SecurityConfig.java
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\config\WebSocketAuthInterceptor.java
@@ -92,7 +91,6 @@ C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Te
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\security\JwtFilter.java
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\security\JwtUtil.java
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\security\JWTUtility.java
-C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\security\Security.java
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\Service\ChatService.java
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\Service\Courseservice.java
 C:\Users\VAMSIDHAR REDDY\OneDrive\Pictures\10 to b.tech\infy (doc and github)\Teamwork\backend\src\main\java\com\infy\project\Service\EnrollmentService.java

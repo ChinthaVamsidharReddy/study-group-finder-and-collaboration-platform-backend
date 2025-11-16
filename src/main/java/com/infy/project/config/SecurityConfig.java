@@ -1,6 +1,8 @@
 package com.infy.project.config;
 
 import com.infy.project.security.JwtFilter;
+
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -50,16 +52,56 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ✅ CORS configuration
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("https://study-group-finder-and-collaboratio-roan.vercel.app","http://localhost:3000"));
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        configuration.setAllowCredentials(true);
+        CorsConfiguration config = new CorsConfiguration();
+
+        config.setAllowedOriginPatterns(List.of(
+            "http://localhost:3000",
+            "https://study-group-finder-and-collaboratio-roan.vercel.app"
+        ));
+
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setExposedHeaders(List.of("*"));
+        config.setAllowCredentials(true);
+
+        // ✅ PRINT CORS ORIGINS TO SERVER LOG
+        System.out.println("🚀 CORS Allowed Origins:");
+        config.getAllowedOriginPatterns().forEach(origin ->
+            System.out.println("   → " + origin)
+        );
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/**", config);
+
         return source;
     }
+
+    @Bean
+        public FilterRegistrationBean<CorsDebugFilter> corsDebugFilter() {
+            FilterRegistrationBean<CorsDebugFilter> bean = new FilterRegistrationBean<>();
+            bean.setFilter(new CorsDebugFilter());
+            bean.addUrlPatterns("/*");
+            return bean;
+        }
+
+        class CorsDebugFilter implements jakarta.servlet.Filter {
+            @Override
+            public void doFilter(jakarta.servlet.ServletRequest req,
+                                jakarta.servlet.ServletResponse res,
+                                jakarta.servlet.FilterChain chain)
+                    throws java.io.IOException, jakarta.servlet.ServletException {
+
+                var request = (jakarta.servlet.http.HttpServletRequest) req;
+
+                System.out.println("🌍 CORS Request From Origin: " + request.getHeader("Origin"));
+                System.out.println("➡  Path: " + request.getRequestURI());
+                System.out.println("-------------------------");
+
+                chain.doFilter(req, res);
+            }
+        }
+
+
 }

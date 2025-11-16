@@ -28,7 +28,6 @@ com\infy\project\Interface\SessionReminderRepository.class
 com\infy\project\Interface\GroupMemberRepository.class
 com\infy\project\Service\ProfileService.class
 com\infy\project\Controller\SessionController.class
-com\infy\project\config\CorsConfig.class
 com\infy\project\Dto\StatusPayload.class
 com\infy\project\model\PollVoteEvent.class
 com\infy\project\model\MessageFile.class
@@ -81,7 +80,6 @@ com\infy\project\model\Session.class
 com\infy\project\Dto\ChatMessageDto.class
 com\infy\project\Controller\Pollsfetch.class
 com\infy\project\model\MessageStatusId.class
-com\infy\project\config\CorsConfig$1.class
 com\infy\project\model\Role.class
 com\infy\project\Interface\GroupRepository.class
 com\infy\project\Dto\TypingNotificationDto.class
