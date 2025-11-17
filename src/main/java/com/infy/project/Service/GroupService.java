@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GroupService {
 	
-	int count_for_courses=10;
+	int count_for_courses=70;
 	
     @Autowired
     private GroupRepository groupRepository; 
